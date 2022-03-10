@@ -1,10 +1,17 @@
 spring:
   datasource:
-    platform: org.hibernate.dialect.PostgreSQLDialect
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/imdb_tsv
+#    platform: org.hibernate.dialect.PostgreSQLDialect
+#    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/novo
     username: postgres
     password: postgres
 #    initialization-mode: always
-#  batch:
-#    initialize-schema: always
+#testee:
+#  datasource:
+#    platform: org.hibernate.dialect.PostgreSQLDialect
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/imdb_tsv
+#    username: postgres
+#    password: postgres
+  batch:
+    initialize-schema: always
