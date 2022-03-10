@@ -5,15 +5,15 @@ spring:
     jdbc-url: jdbc:postgresql://localhost:5433/novo
     username: postgres
     password: postgres
-xablau:
+legacy:
     datasource:
       jdbc-url: jdbc:postgresql://localhost:5432/imdb_tsv
       username: postgres
       password: postgres
-piroca:
-  datasource:
-    jdbc-url: jdbc:postgresql://localhost:5433/batch_schema
-    username: postgres
-    password: postgres
+#test:
+#  datasource:
+#    jdbc-url: jdbc:postgresql://localhost:5433/batch_schema
+#    username: postgres
+#    password: postgres
 
 

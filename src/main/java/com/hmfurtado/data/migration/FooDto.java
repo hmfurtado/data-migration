@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DTOzin {
+public class FooDto {
 
     private String titleId;
     private Integer ordering;

@@ -6,25 +6,14 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.item.ItemProcessor;
-import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
-import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
-import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
-import javax.annotation.processing.Processor;
 import javax.sql.DataSource;
 
 @Slf4j
@@ -39,15 +28,15 @@ public class JobConfig {
     private StepBuilderFactory stepBuilderFactory;
 
     @Autowired
-    @Qualifier("dataSourceNovo")
+    @Qualifier("dataSourceNewDB")
     private DataSource dataSource;
 
     @Autowired
-    private Writerzin writer;
+    private WriteCustom writer;
 
     @Bean
-    public Job jobzin() {
-        return jobBuilderFactory.get("jobzin")
+    public Job fooJob() {
+        return jobBuilderFactory.get("fooJob")
                 .incrementer(new RunIdIncrementer())
                 .flow(step1())
                 .end().build();
@@ -55,18 +44,18 @@ public class JobConfig {
 
     private Step step1() {
         return stepBuilderFactory.get("step1")
-                .<DTOzin, DTOzin>chunk(3)
+                .<FooDto, FooDto>chunk(3)
                 .reader(jdbcCursorItemReader())
                 .writer(writer)
                 .build();
     }
 
     @Bean
-    public JdbcCursorItemReader<DTOzin> jdbcCursorItemReader() {
-        JdbcCursorItemReader<DTOzin> a = new JdbcCursorItemReader<DTOzin>();
+    public JdbcCursorItemReader<FooDto> jdbcCursorItemReader() {
+        JdbcCursorItemReader<FooDto> a = new JdbcCursorItemReader<FooDto>();
         a.setDataSource(dataSource);
         a.setSql("select * from title");
-        a.setRowMapper(new BeanPropertyRowMapper<>(DTOzin.class));
+        a.setRowMapper(new BeanPropertyRowMapper<>(FooDto.class));
 
         return a;
     }
