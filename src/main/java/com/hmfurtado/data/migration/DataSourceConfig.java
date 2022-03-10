@@ -5,7 +5,6 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
@@ -16,7 +15,6 @@ public class DataSourceConfig {
 
     @Bean
     @Primary
-    @ConfigurationProperties(prefix = "piroca.datasource")
     public DataSource dataSourceBatch() {
         return new EmbeddedDatabaseBuilder()
                 .generateUniqueName(true)
@@ -28,13 +26,13 @@ public class DataSourceConfig {
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource dataSourceNovo() {
+    public DataSource dataSourceNewDB() {
         return DataSourceBuilder.create().build();
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "xablau.datasource")
-    public DataSource dataSourceLegado() {
+    @ConfigurationProperties(prefix = "legacy.datasource")
+    public DataSource dataSourceLegacy() {
         return DataSourceBuilder.create().build();
     }
 

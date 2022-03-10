@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class Writerzin implements ItemWriter {
+public class WriteCustom implements ItemWriter {
     @Override
     public void write(List items) throws Exception {
         items.stream().forEach(System.out::println);
