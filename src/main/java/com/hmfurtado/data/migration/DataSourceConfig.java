@@ -8,19 +8,26 @@ import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
-//@Configuration
+@Configuration
 public class DataSourceConfig {
 
-//    @Bean
-//    @Primary
-//    @ConfigurationProperties(prefix = "spring.datasouce")
-//    public DataSource dataSource() {
-//        return DataSourceBuilder.create().build();
-//    }
-//
-//    @Bean
-//    @ConfigurationProperties(prefix = "testee.datasouce")
-//    public DataSource dataSourceNovo() {
-//        return DataSourceBuilder.create().build();
-//    }
+    @Bean
+    @Primary
+    @ConfigurationProperties(prefix = "piroca.datasource")
+    public DataSource dataSourceBatch() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource dataSourceNovo() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "xablau.datasource")
+    public DataSource dataSourceLegado() {
+        return DataSourceBuilder.create().build();
+    }
+
 }

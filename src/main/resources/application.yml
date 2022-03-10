@@ -1,17 +1,19 @@
 spring:
-  datasource:
-#    platform: org.hibernate.dialect.PostgreSQLDialect
-#    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/novo
-    username: postgres
-    password: postgres
-#    initialization-mode: always
-#testee:
-#  datasource:
-#    platform: org.hibernate.dialect.PostgreSQLDialect
-#    driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://localhost:5432/imdb_tsv
-#    username: postgres
-#    password: postgres
   batch:
     initialize-schema: always
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5433/novo
+    username: postgres
+    password: postgres
+xablau:
+    datasource:
+      jdbc-url: jdbc:postgresql://localhost:5432/imdb_tsv
+      username: postgres
+      password: postgres
+piroca:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5433/batch_schema
+    username: postgres
+    password: postgres
+
+

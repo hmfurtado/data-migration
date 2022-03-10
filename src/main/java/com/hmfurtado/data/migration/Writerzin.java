@@ -9,7 +9,6 @@ import java.util.List;
 public class Writerzin implements ItemWriter {
     @Override
     public void write(List items) throws Exception {
-        System.out.println("CHEGUEI CARAIO");
         items.stream().forEach(System.out::println);
     }
 }
