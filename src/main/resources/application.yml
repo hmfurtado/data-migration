@@ -1,13 +1,15 @@
 spring:
   batch:
     initialize-schema: always
+#    job:
+#      names: "fooJob"
   datasource:
-    jdbc-url: jdbc:postgresql://localhost:5433/novo
+    jdbc-url: jdbc:postgresql://localhost:5433/imdb_new
     username: postgres
     password: postgres
 legacy:
     datasource:
-      jdbc-url: jdbc:postgresql://localhost:5432/imdb_tsv
+      jdbc-url: jdbc:postgresql://localhost:5432/imdb_legacy
       username: postgres
       password: postgres
 #test:
@@ -15,5 +17,3 @@ legacy:
 #    jdbc-url: jdbc:postgresql://localhost:5433/batch_schema
 #    username: postgres
 #    password: postgres
-
-
