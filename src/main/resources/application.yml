@@ -1,8 +1,8 @@
 spring:
   batch:
     initialize-schema: always
-#    job:
-#      names: "fooJob"
+    job:
+      names: "jpaJob"
   datasource:
     jdbc-url: jdbc:postgresql://localhost:5433/imdb_new
     username: postgres

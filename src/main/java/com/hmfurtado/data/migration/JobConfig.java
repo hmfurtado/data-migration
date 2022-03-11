@@ -52,12 +52,6 @@ public class JobConfig {
     private DataSource dataSourceLegacy;
 
     @Autowired
-    private ReaderListenerCustom readerListenerCustom;
-
-    @Autowired
-    private WriterListenerCustom writerListenerCustom;
-
-    @Autowired
     private ProcessorCustom processorCustom;
 
     @Bean
