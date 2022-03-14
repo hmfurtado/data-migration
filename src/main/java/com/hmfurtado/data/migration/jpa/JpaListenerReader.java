@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class JpaListenerReader implements ItemReadListener {
     @Override
     public void beforeRead() {
-        log.info("LENDO");
+        log.info("READING");
     }
 
     @Override

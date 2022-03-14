@@ -11,7 +11,7 @@ import java.util.List;
 public class JpaListenerWriter implements ItemWriteListener {
     @Override
     public void beforeWrite(List items) {
-        log.info("ESCREVENDO {}", items.size());
+        log.info("WRITING {}", items.size());
     }
 
     @Override

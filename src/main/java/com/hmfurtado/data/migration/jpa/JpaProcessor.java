@@ -1,17 +1,16 @@
 package com.hmfurtado.data.migration.jpa;
 
 import com.hmfurtado.data.migration.FooDto2;
-import com.hmfurtado.data.migration.jpa.entitynew.NewEntity;
-import com.hmfurtado.data.migration.jpa.entityold.OldEntity;
+import com.hmfurtado.data.migration.jpa.entityold.OldEntityWIthCompositePK;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class JpaProcessor implements ItemProcessor<OldEntity, FooDto2> {
+public class JpaProcessor implements ItemProcessor<OldEntityWIthCompositePK, FooDto2> {
     @Override
-    public FooDto2 process(OldEntity item) throws Exception {
+    public FooDto2 process(OldEntityWIthCompositePK item) throws Exception {
         try {
             return FooDto2.builder()
                     .titleId(item.getId().getTitleid())
@@ -19,7 +18,7 @@ public class JpaProcessor implements ItemProcessor<OldEntity, FooDto2> {
                     .language(item.getLanguage())
                     .build();
         } catch (Exception e) {
-            log.error("DEU MERDA {}", item.toString());
+            log.error("ERROR ON {}", item.toString());
             return FooDto2.builder().title("ZZZZZZZZZZZZZZZZZZZZZZZZZZZ").build();
         }
     }

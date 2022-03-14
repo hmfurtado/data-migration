@@ -11,7 +11,7 @@ import java.util.List;
 public class WriteCustom implements ItemWriter {
     @Override
     public void write(List items) throws Exception {
-        log.info("Escrevendo: {}", items.size());
+        log.info("Writing: {}", items.size());
         for (Object a : items) {
             log.info(a.toString());
         }

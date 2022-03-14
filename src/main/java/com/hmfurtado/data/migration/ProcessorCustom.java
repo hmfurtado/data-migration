@@ -17,7 +17,7 @@ public class ProcessorCustom implements ItemProcessor<FooDto, FooDto2> {
                     .language(item.getLanguage())
                     .build();
         } catch (Exception e) {
-            log.error("DEU MERDA {}", item.toString());
+            log.error("ERROR ON {}", item.toString());
             return FooDto2.builder().title("ZZZZZZZZZZZZZZZZZZZZZZZZZZZ").build();
         }
     }
