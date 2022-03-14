@@ -6,21 +6,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@Entity
-@Table(name = "title")
-public class OldEntity {
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder
+//@Entity
+//@Table(name = "newtable3")
+public class OldEntityIdNormal {
 
-    @EmbeddedId
-    private OldEntityPK id;
+    @Id
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "titleid")
+    private String titleid;
+
+    @Column(name = "ordering")
+    private String ordering;
 
     @Column(name = "title")
     private String title;

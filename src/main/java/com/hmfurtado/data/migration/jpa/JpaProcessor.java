@@ -9,18 +9,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class JpaProcessor implements ItemProcessor<OldEntity, NewEntity> {
+public class JpaProcessor implements ItemProcessor<OldEntity, FooDto2> {
     @Override
-    public NewEntity process(OldEntity item) throws Exception {
+    public FooDto2 process(OldEntity item) throws Exception {
         try {
-            return NewEntity.builder()
-                    .titleid(item.getTitleid())
+            return FooDto2.builder()
+                    .titleId(item.getId().getTitleid())
                     .title(item.getTitle())
                     .language(item.getLanguage())
                     .build();
         } catch (Exception e) {
             log.error("DEU MERDA {}", item.toString());
-            return NewEntity.builder().title("ZZZZZZZZZZZZZZZZZZZZZZZZZZZ").build();
+            return FooDto2.builder().title("ZZZZZZZZZZZZZZZZZZZZZZZZZZZ").build();
         }
     }
 }

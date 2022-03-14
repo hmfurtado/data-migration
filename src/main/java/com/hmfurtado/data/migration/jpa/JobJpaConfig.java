@@ -86,7 +86,7 @@ public class JobJpaConfig {
     private Step step1() {
         return stepBuilderFactory.get("step1")
                 .transactionManager(jpaTransactionManager)
-                .<OldEntity, NewEntity>chunk(1000)
+                .<OldEntity, NewEntity>chunk(5000)
                 .reader(jpaReader())
                 .listener(jpaListenerReader)
                 .processor(jpaProcessor)
@@ -101,14 +101,26 @@ public class JobJpaConfig {
                 .name("jpaReader")
                 .entityManagerFactory(oldDatabaseEntityManagerFactory)
                 .queryString("select o from OldEntity o")
-                .pageSize(1000)
+                .pageSize(10000)
                 .build();
     }
 
     @Bean
-    public JpaItemWriter<NewEntity> jpaWriter() {
-        return new JpaItemWriterBuilder<NewEntity>()
-                .entityManagerFactory(newDatabaseEntityManagerFactory).build();
+    public JdbcBatchItemWriter<FooDto2> jpaWriter() {
+        return new JdbcBatchItemWriterBuilder<FooDto2>()
+                .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
+                .sql("INSERT INTO newtable3 " +
+                        "(titleid, title, language) " +
+                        "VALUES " +
+                        "(:titleId, :title, :language)")
+                .dataSource(dataSourceNewDB)
+                .build();
     }
+
+//    @Bean
+//    public JpaItemWriter<NewEntity> jpaWriter() {
+//        return new JpaItemWriterBuilder<NewEntity>()
+//                .entityManagerFactory(newDatabaseEntityManagerFactory).build();
+//    }
 
 }
